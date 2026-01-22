@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un An</title>
+  <link rel="icon" href="https://img.icons8.com/ios-filled/50/000000/heart.png" type="image/png">
+
+
+  <!-- Font Pacifico pour le bouton -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Font principale -->
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #fff5c0; /* fond beige */
+      --color-primary-m: rgba(255, 245, 192, 0.4);
+      --color-pm: #fcf4cc;
+      --color-secondary: #ff4646;
+      --color-tertiary: #ffb396;
+      --color-tertiary-m: rgba(255, 179, 150, 0.7);
+      --color-quinary: darkred;
+      --color-quinary-m: #ff8585;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Crimson Text", serif;
+      letter-spacing: 0.2rem;
+      line-height: 1.8;
+      color: var(--color-quinary);
+      background-color: var(--color-primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .souvenir-container {
+      width: 90%;
+      max-width: 60rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 2rem;
+      padding: 4rem;
+      background-color: var(--color-primary-m);
+      border-radius: 2rem;
+      box-shadow: 0 0 2rem var(--color-tertiary-m);
+      justify-items: center;
+      align-items: center;
+    }
+
+    .souvenir-box {
+      width: 15rem;
+      height: 15rem;
+      background-color: var(--color-pm);
+      border: 0.2rem dashed var(--color-secondary);
+      border-radius: 1rem;
+      box-shadow: 0 0 1.5rem var(--color-tertiary-m);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .souvenir-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 2rem var(--color-secondary);
+    }
+
+    .page-transition {
+      margin-top: 3rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .page-transition button {
+      appearance: none;
+      border: none;
+      padding: 1.5rem 4rem;
+      border-radius: 10rem;
+      font-family: "Pacifico", cursive;
+      font-size: calc(1rem + 0.5vw);
+      letter-spacing: 0.2rem;
+      color: var(--color-quinary);
+      background: radial-gradient(circle at top left, var(--color-secondary), var(--color-tertiary));
+      box-shadow: 0 0 2rem var(--color-tertiary-m);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .page-transition button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 1rem 3rem rgba(255,70,70,0.5);
+    }
+
+    .page-transition button:active {
+      transform: translateY(0) scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="souvenir-container" id="souvenirContainer">
+    <div class="souvenir-box" id="souvenirBox">Clique sur le bouton !</div>
+  </div>
+
+  <div class="page-transition">
+    <button onclick="nouveauSouvenir()">Nouveau Souvenir</button>
+  </div>
+
+  <div class="page-transition">
+    <button id="nextPageBtn">La suite 💖</button>
+    </div>
+  <script>
+    const souvenirs = [
+      "Regarder les étoiles sur le plage à Biscarosse",
+      "Ma chute devant le cinéma",
+      "Le premier dodo chez tes parents",
+      "'Tu veux être mon amoureuse ?'",
+      "Lion qui conduit la voiture de Fabrice",
+      "Les chaussettes Us",
+      "On a dansé le rock chez toi tous les deux",
+      "Le pyjama corda de chez Undiz",
+      "Le flirt au Danemark",
+      "Je mange comme un cochon au Nachausse",
+      "On va manger des pizzas à Basicil&Co",
+      "Borg King spécial Stranger things",
+      "Le bouquet de roses de la St-Valentin",
+      "Le Bistrot vénitien",
+      "Ramper sur le lac de Biscarosse",
+      "La découverte du PepeChicken",
+      "On est allé au trampoline park tous les deux",
+      "On est allé à la patinoire tous les deux",
+      "Nos goûters de gros",
+      "L'arrivée de petit pingouin de Noël à la maison",
+      "Pizza Hut en Deliveroo",
+      "Chral achète son premier jean large",
+      "Nalowine tous les deux",
+      "On va en soirée tous les deux",
+      "Je prends le moovicité pour aller te voir",
+      "On fait nos tacos maisons grave miom",
+      "Wesssh, Weesshh (y a de la lumière)",
+      "On va voir le mannequin Arno chez Hollister",
+      "On va voir 'En Fanfare' alors qu'on est tout juste amoureux",
+      "On est terrifié devant FNAF",
+      "Tu viens au concert ghibli",
+      "Je viens au spectacle de danse",
+      "On passe le bac tous les deux",
+      "Baba nous kiffe trop",
+      "On va chez tiger (encoure)",
+      "Je t'offre les orchidées LEGO",
+      "Tu me fais découvrir les ghiblis",
+      "On danse sur le vinyl Totoro",
+      "On fait une nuit sans se lâcher",
+      "Je te fais des tours de magie",
+      "Je te joue du basson dans ma chambre",
+      "Je te ramène gros Nello Kitty",
+      "On fait des calins chez toi une semaine après être ensemble",
+      "On va au macdo",
+      "Les cocktails pirates glouglouglou",
+      "Je te prends la coque Snoopy",
+      "Je dodo sur ton ventre",
+      "Tu me rases avec Jules (ça s'est irrité...)",
+      "Mouton découvre ses coupains",
+      "On fait l'anniv de Pierre au laser game",
+      "On fait ton anniv au Laser Game (Ordralfabétix en légende)",
+      "Je te fais goûter un de mes kouki",
+      "On va à lecoq",
+      "On essaye de vendre nos pieds",
+      "Je te spam de bisous de la tête aux pié",
+      "On rougarde Zootopie (toi deux fois)",
+      "On va manger toulédeu à Biscarosse (toi poké moi borgr)",
+      "On mange des pokés à Clermont",
+      "On re regarde les nari potter (tu connais tout)",
+      "Undercover avec Bertrand (le goat)",
+      "On fait la grande roue du marché de Noël",
+      "On mange au marché de Noël",
+      "On va marcher dehors avec Pierre et toi dans st-genes",
+      "On joue a Wii-Party",
+      "On va à snorkmimimiland"
+    ];
+
+    // Mélange initial pour éviter doublons
+    let souvenirsMelanges = [...souvenirs];
+    let indexSouvenir = 0;
+
+    function melanger(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    souvenirsMelanges = melanger(souvenirsMelanges);
+
+    function nouveauSouvenir() {
+      if (indexSouvenir >= souvenirsMelanges.length) {
+        souvenirsMelanges = melanger([...souvenirs]); // remélange quand tout est utilisé
+        indexSouvenir = 0;
+      }
+      document.getElementById("souvenirBox").textContent = souvenirsMelanges[indexSouvenir];
+      indexSouvenir++;
+    }
+
+const nextBtn = document.getElementById('nextPageBtn');
+
+if(nextBtn){
+  nextBtn.addEventListener('click', () => {
+    document.body.classList.add('page-leave');
+
+    setTimeout(() => {
+      window.location.href = 'fleurs.html'; // ← ta page suivante
+    }, 600);
+  });
+}
+  </script>
+</body>
+</html>
